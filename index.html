@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spotify Preview</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/css/perfect-scrollbar.css">
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="container-fluid">
+        <a id="title" class="navbar-brand" href="#">Spotify Preview</a>
+        <ul class="copy nav navbar-nav navbar-right">
+          <li>
+            <span>&copy;Mike-Casas</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-9 col-md-offset-1">
+          <div class="container-finder">
+            <input id="input-finder" type="text" class="form-control">
+            <div class="row" id="tracks-container">
+              <div class="brand_water">Spotify Preview</div>
+              <!-- template handlebars-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <script type="text/x-handlebars-template" id="track-template">
+    {{#each track}}
+    <div class="col-md-6">
+      <div class="track-container">
+        <div class="track-info">
+          <div class="cover">
+            <img class="img-rounded" src="{{this.album.images.1.url}}" alt="" class="img-responsive">
+          </div>
+          <div class="content">
+            <strong>{{this.name}}</strong>
+            <div>{{this.artists.0.name}}</div>
+          </div>
+          <div id="share_box">
+          <!-- Twitter -->
+            <a onclick="javascript:window.open('http://twitter.com/share?text=listening {{this.name}}, {{this.artists.0.name}} at @Spotify - &amp;url={{this.external_urls.spotify}}', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i class="text-info fa fa-twitter"></i></a>
+            <!-- Facebook -->
+            <a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u={{this.external_urls.spotify}}', '_blank', 'width=800, height=500, top=200, left=300');void(0);"><i class="fa fa-facebook"></i></a>
+        </div>
+        </div>
+
+         <audio controls>
+          <source src="{{this.preview_url}}">
+        Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+    {{/each}}
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/0.6.10/js/perfect-scrollbar.jquery.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
