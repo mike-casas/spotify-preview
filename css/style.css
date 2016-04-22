@@ -20,7 +20,8 @@ header .navbar .copy{
 }
 .container-finder{
   padding: 2em 1em;
-  height: 510px;
+  max-height: 490px;
+  min-height: 490px;
   margin-top: 2rem;
   border-radius: .5rem;
   background-color: rgba(0%, 9%, 15%,0.6)
